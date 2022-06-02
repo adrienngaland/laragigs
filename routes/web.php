@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Listing;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,20 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// All Listings
 Route::get('/', function () {
     return view('listings', [
-        'name' => 'Adrien',
-        'listings' => [
-            [
-                'id' => 1,
-                'title' => 'Listing One',
-                'description'=> 'Here is where you can register web routes for your application. These | routes are loaded by the RouteServiceProvider within a group which | contains the "web" middleware group. Now create something great!'
-            ],
-            [
-                'id' => 2,
-                'title' => 'Listing Two',
-                'description'=> 'Here is where you can register web routes for your application. These | routes are loaded by the RouteServiceProvider within a group which | contains the "web" middleware group. Now create something great!'
-            ]
-        ]
+        'heading' => 'Latest Listings',
+        'listings' => Listing::all()
+    ]);
+});
+
+// Single Listing
+Route::get('/listings/{id}', function ($id) {
+    return view('listing', [
+        'listing' => Listing::find($id),
     ]);
 });
