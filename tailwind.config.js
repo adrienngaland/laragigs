@@ -6,10 +6,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        roboto: 'Roboto, sans-serif',
+      },
       colors: {
         laravel: "#ef3b2d",
       },
     },
   },
   plugins: [],
-}
+};
